@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "flutter_cqlbr_firestore"
+		},
+		{
+			"path": "flutter_cqlbr_core"
+		},
+		{
+			"path": "flutter_cqlbr_firebird"
+		}
+	],
+	"settings": {}
+}

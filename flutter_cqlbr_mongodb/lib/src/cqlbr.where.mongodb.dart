@@ -1,0 +1,32 @@
+import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
+
+class CQLWhere extends CQLSection implements ICQLWhere {
+  late final ICQLExpression _expression;
+
+  CQLWhere() : super(name: 'Where') {
+    _expression = CQLExpression();
+  }
+
+  @override
+  ICQLExpression get expression => _expression;
+  @override
+  set expression(ICQLExpression value) => _expression = value;
+
+  @override
+  String serialize() {
+    return isEmpty()
+        ? ''
+        : Utils.instance
+            .concat(['{', _expression.serialize(), '}'], delimiter: '');
+  }
+
+  @override
+  void clear() {
+    _expression.clear();
+  }
+
+  @override
+  bool isEmpty() {
+    return _expression.isEmpty();
+  }
+}
