@@ -1,4 +1,4 @@
-# flutter_cqlbr
+# Criteria Query Language Braisl for Firestore
 
 ```Dart
 void main() async {
