@@ -1,4 +1,4 @@
-# Criteria Query Language for Firestore
+## Criteria Query Language for Firebase Database
 
 ```Dart
 void main() async {
