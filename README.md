@@ -1,16 +1,16 @@
 # :hammer: Recursos do Criteria Quary Language
 
-:heavy_check_mark: `Recurso 1`: ```Firebase Database``` (Firestore)
+:heavy_check_mark: `Recurso 1`: ```Firebase Database``` (Result Query)
 
-:heavy_check_mark: `Recurso 2`: ```MySQL```
+:heavy_check_mark: `Recurso 2`: ```MySQL``` (Result String)
 
-:heavy_check_mark: `Recurso 3`: ```SQLite```
+:heavy_check_mark: `Recurso 3`: ```SQLite``` (Result String)
 
-:heavy_check_mark: `Recurso 3`: ```Firebase```
+:heavy_check_mark: `Recurso 3`: ```Firebase``` (Result String)
 
-:heavy_check_mark: `Recurso 3`: ```DB2```
+:heavy_check_mark: `Recurso 3`: ```DB2``` (Result String)
 
-:heavy_check_mark: `Recurso 3`: ```MongoDB```
+:heavy_check_mark: `Recurso 3`: ```MongoDB``` (Result String)
 
 
 ## Exemple for Firebase Database
