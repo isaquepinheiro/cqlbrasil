@@ -1,4 +1,4 @@
-# Criteria Query Language Braisl for Firestore
+# Criteria Query Language for Firestore
 
 ```Dart
 void main() async {
