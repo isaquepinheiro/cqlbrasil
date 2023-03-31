@@ -1,16 +1,18 @@
 # :hammer: Recursos do Criteria Quary Language
 
-:heavy_check_mark: `Recurso 1`: ```Firebase Database``` (Result Query)
+:heavy_check_mark: `Core`: ```Dependency on Packages```
 
-:heavy_check_mark: `Recurso 2`: ```MySQL``` (Result String)
+:heavy_check_mark: `Package 1`: ```Firebase Database``` (Result Query)
 
-:heavy_check_mark: `Recurso 3`: ```SQLite``` (Result String)
+:heavy_check_mark: `Package 2`: ```MySQL``` (Result String)
 
-:heavy_check_mark: `Recurso 3`: ```Firebase``` (Result String)
+:heavy_check_mark: `Package 3`: ```SQLite``` (Result String)
 
-:heavy_check_mark: `Recurso 3`: ```DB2``` (Result String)
+:heavy_check_mark: `Package 3`: ```Firebase``` (Result String)
 
-:heavy_check_mark: `Recurso 3`: ```MongoDB``` (Result String)
+:heavy_check_mark: `Package 3`: ```DB2``` (Result String)
+
+:heavy_check_mark: `Package 3`: ```MongoDB``` (Result String)
 
 
 ## Exemple for Firebase Database
