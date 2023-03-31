@@ -1,6 +1,6 @@
 # flutter_cqlbr
 
-```Delphi
+```Dart
 void main() async {
   // Fake Cloud Firestore
   final instance1 = FakeFirebaseFirestore();
