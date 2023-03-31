@@ -1,6 +1,7 @@
 part of 'cqlbr.expression.dart';
 
 extension CQLCriteriaExpressionFunc on CQLCriteriaExpression {
+  
   ICQLCriteriaExpression funcExt(ICQLOperator oper) {
     if (oper.value is List<String>) {
       return _funcList(oper);

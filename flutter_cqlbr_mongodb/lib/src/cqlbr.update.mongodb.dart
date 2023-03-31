@@ -18,17 +18,17 @@ class CQLUpdateMongoDB extends CQLSection implements ICQLUpdate {
   set tableName(String value) => _tableName = value;
 
   @override
-  String serialize() {
+  T? serialize<T extends Object>() {
     if (!isEmpty()) {
       return Utils.instance.concat([
         'UPDATE',
         _tableName,
         'SET',
         _serializeNameValuePairsForUpdate(_values),
-      ]);
+      ]) as T;
     }
 
-    return '';
+    return '' as T;
   }
 
   @override
@@ -61,6 +61,6 @@ class CQLUpdateMongoDB extends CQLSection implements ICQLUpdate {
       );
     }
 
-    return result;
+    return result.toLowerCase();
   }
 }

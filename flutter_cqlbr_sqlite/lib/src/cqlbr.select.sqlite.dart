@@ -6,7 +6,7 @@ import 'cqlbr.serialize.sqlite.dart';
 
 class CQLSelectSQLite extends CQLSelect {
   CQLSelectSQLite() {
-    driver = Database.dbnSQLite;
+    driver = CQLDatabase.dbnSQLite;
     qualifiers = CQLSelectQualifiersSQLite();
     CQLBrRegister.instance.registerSelect(driver, this);
     CQLBrRegister.instance.registerSerialize(driver, CQLSerializerSQLite());

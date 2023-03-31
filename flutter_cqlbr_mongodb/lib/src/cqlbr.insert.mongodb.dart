@@ -33,16 +33,16 @@ class CQLInsertMongoDB extends CQLSection implements ICQLInsert {
   }
 
   @override
-  String serialize() {
-    String result = '';
+  T? serialize<T extends Object>() {
+    late final String result;
 
-    if (!isEmpty()) {
-      result = _serializeNameValuePairsForInsert(_values);
-    } else {
-      result = '';
-    }
+    result = isEmpty()
+        ? ''
+        : Utils.instance.concat(
+            [tableName, '.insertOne({ ', _serializeNameValuePairsForInsert(_values), ' })'],
+            delimiter: '');
 
-    return '{$result}';
+    return result as T;
   }
 
   @override
@@ -71,7 +71,7 @@ class CQLInsertMongoDB extends CQLSection implements ICQLInsert {
           delimiter: '');
     }
 
-    return result;
+    return result.toLowerCase();
   }
 
   String _checkEnd(int i, int count) {

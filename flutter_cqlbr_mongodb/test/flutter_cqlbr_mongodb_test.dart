@@ -12,8 +12,16 @@ void main() {
         .column$('user_id')
         .column$('status')
         .from$('people')
-        .asString();
-    expect(result, '{nome: "Isaque", sobrenome: "Pinheiro", idade: 51}');
+        .asResult();
+    expect(result, 'people.find({}, { id: 1, user_id: 1, status: 1 })');
+  });
+
+  test('SelectMongoDB', () {
+    String result = cqlbr
+        .select$()
+        .from$('people')
+        .asResult();
+    expect(result, 'people.find({})');
   });
 
   test('InsertMongoDB', () {
@@ -23,7 +31,7 @@ void main() {
         .set$('nome', 'Isaque')
         .set$('sobrenome', 'Pinheiro')
         .set$('idade', 51)
-        .asString();
-    expect(result, '{nome: "Isaque", sobrenome: "Pinheiro", idade: 51}');
+        .asResult();
+    expect(result, 'customers.insertOne({ nome: "Isaque", sobrenome: "Pinheiro", idade: 51 })');
   });
 }

@@ -67,7 +67,7 @@ class CQLExpression extends ICQLExpression {
   }
 
   @override
-  T serialize<T extends Object>([bool addParens = false]) {
+  T? serialize<T extends Object>([bool addParens = false]) {
     if (isEmpty()) {
       return '' as T;
     }
@@ -175,5 +175,5 @@ class CQLCriteriaExpression implements ICQLCriteriaExpression {
   }
 
   @override
-  T asResult<T extends Object>() => _expression!.serialize<T>();
+  T asResult<T extends Object>() => _expression!.serialize<T>()!;
 }

@@ -29,7 +29,7 @@ class CQLUpdateFirestore extends CQLSection implements ICQLUpdate {
 
   @override
   T? serialize<T extends Object>([String? id]) {
-    return isEmpty() ? null : instance.collection(_tableName).doc() as T;
+    return isEmpty() ? '' as T : instance.collection(_tableName).doc() as T;
   }
 
   Map<String, dynamic> toMap() {

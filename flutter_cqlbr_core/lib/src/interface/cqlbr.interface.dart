@@ -53,7 +53,7 @@ abstract class ICQLExpression {
   set operation(CQLExpressionOperation value);
   CQLOperatorCompare get compare;
   set compare(CQLOperatorCompare value);
-  T serialize<T extends Object>([bool addParens = false]);
+  T? serialize<T extends Object>([bool addParens = false]);
   bool isEmpty();
   void copyWith(ICQLExpression node);
   void clear();

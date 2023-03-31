@@ -117,7 +117,7 @@ class CQLCase implements ICQLCase {
 
   @protected
   String serializeExpression(ICQLExpression expression) {
-    return expression.isEmpty() ? '' : expression.serialize();
+    return expression.isEmpty() ? '' : expression.serialize()!;
   }
 }
 

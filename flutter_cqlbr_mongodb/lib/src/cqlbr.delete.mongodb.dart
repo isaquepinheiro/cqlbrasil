@@ -10,12 +10,10 @@ class CQLDeleteMongoDB extends CQLSection implements ICQLDelete {
   }
 
   @override
-  String serialize() {
+  T? serialize<T extends Object>() {
     return isEmpty()
-        ? ''
-        : Utils.instance.concat([
-            _tableNames.serialize(),
-          ]);
+        ? '' as T
+        : Utils.instance.concat([ _tableNames.serialize()]) as T;
   }
 
   @override

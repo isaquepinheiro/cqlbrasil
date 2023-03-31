@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-
 import '../interface/cqlbr.interface.dart';
 import 'cqlbr.name.dart';
 import 'cqlbr.section.dart';

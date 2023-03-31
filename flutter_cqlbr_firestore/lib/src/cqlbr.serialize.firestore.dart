@@ -8,21 +8,19 @@ class CQLSerializerFirestore extends CQLSerialize {
     late dynamic result;
 
     result = null;
-    result ??= ast.select().serialize<CollectionReference>();
-    result ??= ast.insert().serialize<CollectionReference>();
+    result ??= ast.select().serialize<Query>();
+    result ??= ast.insert().serialize<Query>();
     result ??= ast.delete().serialize<DocumentReference>();
     result ??= ast.update().serialize<DocumentReference>();
     if (!ast.where().isEmpty()) {
       result = (ast.where() as CQLWhereFirestore).serialize<Query>(
-          result is CollectionReference
+          (result is Query)
               ? result
               : (result as DocumentReference).parent);
     }
-    if (result is CollectionReference) {
-      injbr.update<CollectionReference>((i) => result);
-    } else {
-      injbr.update<DocumentReference>((i) => result);
-    }
+    (result is Query)
+        ? injbr.update<Query>((i) => result)
+        : injbr.update<DocumentReference>((i) => result);
 
     return result as T;
   }

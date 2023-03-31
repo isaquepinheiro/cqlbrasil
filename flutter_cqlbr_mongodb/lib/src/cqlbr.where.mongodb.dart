@@ -13,11 +13,11 @@ class CQLWhere extends CQLSection implements ICQLWhere {
   set expression(ICQLExpression value) => _expression = value;
 
   @override
-  String serialize() {
+  T? serialize<T extends Object>() {
     return isEmpty()
-        ? ''
+        ? null
         : Utils.instance
-            .concat(['{', _expression.serialize(), '}'], delimiter: '');
+            .concat(['{', _expression.serialize(), '}'], delimiter: '') as T;
   }
 
   @override

@@ -6,7 +6,7 @@ import 'cqlbr.serialize.db2.dart';
 
 class CQLSelectDB2 extends CQLSelect {
   CQLSelectDB2() {
-    driver = Database.dbnMySQL;
+    driver = CQLDatabase.dbnMySQL;
     qualifiers = CQLSelectQualifiersDB2();
     CQLBrRegister.instance.registerSelect(driver, this);
     CQLBrRegister.instance.registerSerialize(driver, CQLSerializerDB2());

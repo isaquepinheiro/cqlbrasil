@@ -562,7 +562,7 @@ class CQLBr implements ICQL {
   @override
   ICQL or$(dynamic expression) {
     _activeOperator = Operator.opeOr;
-    _activeExpression!.or(expression);
+    _activeExpression!.or(CQLOperator(value: expression));
 
     return this;
   }

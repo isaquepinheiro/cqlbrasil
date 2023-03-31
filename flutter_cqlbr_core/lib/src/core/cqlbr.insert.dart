@@ -37,7 +37,7 @@ class CQLInsert extends CQLSection implements ICQLInsert {
 
   @override
   T? serialize<T extends Object>() {
-    String result = '';
+    late String result;
 
     if (!isEmpty()) {
       result = Utils.instance.concat(['INSERT INTO ', _tableName]);
