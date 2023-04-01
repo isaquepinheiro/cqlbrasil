@@ -75,6 +75,7 @@ void main() async {
           .equal$('bob1@gmail.com')
           .or$('sobrenome')
           .equal$('Sobrenome Bob 1')
+          .orderBy$('username, sobrenome').desc$()
           .asResult();
       QuerySnapshot snapshot1 = await result1.get();
 
@@ -83,7 +84,8 @@ void main() async {
           .collection('users')
           .where('username', isEqualTo: 'Bob 1')
           .where('email', isEqualTo: 'bob1@gmail.com')
-          .where('sobrenome', isEqualTo: 'Sobrenome Bob 1');
+          .where('sobrenome', isEqualTo: 'Sobrenome Bob 1')
+          .orderBy('username, sobrenome', descending: true);
       QuerySnapshot snapshot2 = await result2.get();
 
       await batch.commit();
