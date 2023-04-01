@@ -3,7 +3,16 @@ import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:dart_cqlbr_core/dart_cqlbr_core.dart';
 import 'package:dart_cqlbr_firestore/dart_cqlbr_firestore.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
+
+class Person {
+  String username;
+  String sobrenome;
+  String email;
+
+  Person(
+      {required this.username, required this.sobrenome, required this.email});
+}
 
 void main() async {
   // Fake Cloud Firestore
@@ -27,7 +36,7 @@ void main() async {
 
   // CQLBr
   CQLBr cqlbr = CQLBr(select: CQLSelectFirestore(instance1));
-  
+
   // Antes de cada test
   setUp(() {});
 
@@ -71,11 +80,28 @@ void main() async {
           .equal$('bob1@gmail.com')
           .or$('sobrenome')
           .equal$('Sobrenome Bob 1')
-          .orderBy$('username, sobrenome').desc$()
+          .orderBy$('username, sobrenome')
+          .desc$()
           .pageSize(1)
           .pagePosition(0)
           .asResult();
-      QuerySnapshot snapshot1 = await result1.get();
+
+      late QuerySnapshot snapshot1;
+      late List<Person> results = [];
+
+      await result1.get().then((QuerySnapshot snapshot) {
+        snapshot1 = snapshot;
+        for (var doc in snapshot.docs) {
+          Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+          Person result = Person(
+              username: data["username"],
+              sobrenome: data["sobrenome"],
+              email: data["email"]);
+          results.add(result);
+        }
+      }).catchError((error) {
+        debugPrint("Ocorreu um erro ao obter o QuerySnapshot: $error");
+      });
 
       // Fake Cloud Firestore
       Query result2 = instance1

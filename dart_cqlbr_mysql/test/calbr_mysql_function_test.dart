@@ -1,6 +1,6 @@
 import 'package:dart_cqlbr_core/dart_cqlbr_core.dart';
 import 'package:dart_cqlbr_mysql/dart_cqlbr_mysql.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 void main() {
   CQLBr cqlbr = CQLBr(select: CQLSelectMySQL());
