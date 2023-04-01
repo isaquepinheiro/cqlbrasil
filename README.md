@@ -20,8 +20,6 @@ Durante o desenvolvimento de software, é evidente a preocupação em que se tem
 
 :heavy_check_mark: `Package 3`: ```DB2``` (Result String)
 
-:heavy_check_mark: `Package 3`: ```MongoDB``` (Result String)
-
 
 ## CQLBr Interface
 
