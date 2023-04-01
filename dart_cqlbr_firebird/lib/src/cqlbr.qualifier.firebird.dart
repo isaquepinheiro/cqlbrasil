@@ -4,15 +4,15 @@ class CQLSelectQualifiersFirebird extends CQLSelectQualifiers {
   CQLSelectQualifiersFirebird();
 
   @override
-  String serializePagination() {
+  T? serializePagination<T extends Object>() {
     String result = '';
-    String first = '';
+    String paging = '';
     String skip = '';
 
     for (final ICQLSelectQualifier element in qualifiers) {
       switch (element.qualifier) {
-        case SelectQualifierType.sqFirst:
-          first = Utils.instance.concat(['FIRST', element.value.toString()]);
+        case SelectQualifierType.sqPaging:
+          paging = Utils.instance.concat(['FIRST', element.value.toString()]);
           break;
         case SelectQualifierType.sqSkip:
           skip = Utils.instance.concat(['SKIP', element.value.toString()]);
@@ -22,6 +22,6 @@ class CQLSelectQualifiersFirebird extends CQLSelectQualifiers {
               'CQLSelectQualifiersFirebird.SerializeSelectQualifiers: Unknown qualifier type');
       }
     }
-    return Utils.instance.concat([result, first, skip]);
+    return Utils.instance.concat([result, paging, skip]) as T;
   }
 }

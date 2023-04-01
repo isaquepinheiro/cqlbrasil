@@ -1,7 +1,7 @@
 import 'package:dart_cqlbr_core/dart_cqlbr_core.dart';
 
-class CQLSelectQualifiersMySQL extends CQLSelectQualifiers {
-  CQLSelectQualifiersMySQL();
+class CQLSelectQualifiersCassandra extends CQLSelectQualifiers {
+  CQLSelectQualifiersCassandra();
 
   @override
   T? serializePagination<T extends Object>() {
@@ -15,11 +15,11 @@ class CQLSelectQualifiersMySQL extends CQLSelectQualifiers {
           paging = Utils.instance.concat(['LIMIT', element.value.toString()]);
           break;
         case SelectQualifierType.sqSkip:
-          skip = Utils.instance.concat(['OFFSET', element.value.toString()]);
+          skip = Utils.instance.concat(['PAGING STATE', element.value]);
           break;
         default:
           throw Exception(
-              'CQLSelectQualifiersMySQL.SerializeSelectQualifiers: Unknown qualifier type');
+              'CQLSelectQualifiersCassandra.SerializeSelectQualifiers: Unknown qualifier type');
       }
     }
     return Utils.instance.concat([result, paging, skip]) as T;
