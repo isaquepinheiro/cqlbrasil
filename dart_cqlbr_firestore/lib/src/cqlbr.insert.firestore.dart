@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
+import 'package:dart_cqlbr_core/dart_cqlbr_core.dart';
 
 class CQLInsertFirestore extends CQLSection implements ICQLInsert {
   late final FirebaseFirestore instance;

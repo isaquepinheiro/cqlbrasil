@@ -1,5 +1,5 @@
-import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
-import 'package:flutter_cqlbr_firebird/flutter_cqlbr_firebird.dart';
+import 'package:dart_cqlbr_core/dart_cqlbr_core.dart';
+import 'package:dart_cqlbr_firebird/dart_cqlbr_firebird.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

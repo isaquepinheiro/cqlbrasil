@@ -1,4 +1,4 @@
-library flutter_cqlbr_mongodb;
+library dart_cqlbr_mongodb;
 
 export './src/cqlbr.functions.mongodb.dart';
 export './src/cqlbr.insert.mongodb.dart';

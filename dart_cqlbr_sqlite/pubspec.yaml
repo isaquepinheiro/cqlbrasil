@@ -1,4 +1,4 @@
-name: flutter_cqlbr_sqlite
+name: dart_cqlbr_sqlite
 description: CQLBr Framework from Dart/Flutter (SQLite)
 version: 0.0.1
 homepage: https://github.com/isaquepinheiro
@@ -11,8 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_cqlbr_core:
-    path: ../flutter_cqlbr_core
+  dart_cqlbr_core:
+    path: ../dart_cqlbr_core
 
 dev_dependencies:
   flutter_test:

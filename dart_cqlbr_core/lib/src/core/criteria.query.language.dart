@@ -1,4 +1,13 @@
-import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
+
+import '../interface/cqlbr.interface.dart';
+import 'cqlbr.ast.dart';
+import 'cqlbr.cases.dart';
+import 'cqlbr.expression.dart';
+import 'cqlbr.functions.dart';
+import 'cqlbr.injection.dart';
+import 'cqlbr.operators.dart';
+import 'cqlbr.register.dart';
+import 'cqlbr.utils.dart';
 
 enum Section {
   secSelect,

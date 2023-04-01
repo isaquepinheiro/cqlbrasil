@@ -1,4 +1,4 @@
-library flutter_cqlbr_mysql;
+library dart_cqlbr_mysql;
 
 export 'src/cqlbr.functions.mysql.dart';
 export 'src/cqlbr.qualifier.mysql.dart';

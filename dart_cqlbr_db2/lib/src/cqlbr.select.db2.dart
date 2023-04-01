@@ -1,4 +1,4 @@
-import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
+import 'package:dart_cqlbr_core/dart_cqlbr_core.dart';
 
 import 'cqlbr.functions.db2.dart';
 import 'cqlbr.qualifier.db2.dart';

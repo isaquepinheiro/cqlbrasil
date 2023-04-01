@@ -1,4 +1,4 @@
-library flutter_cqlbr_sqlite;
+library dart_cqlbr_sqlite;
 
 export 'src/cqlbr.functions.sqlite.dart';
 export 'src/cqlbr.qualifier.sqlite.dart';

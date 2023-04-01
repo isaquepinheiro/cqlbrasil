@@ -1,4 +1,4 @@
-name: flutter_cqlbr_db2
+name: dart_cqlbr_db2
 description: CQLBr Framework for Dart/Flutter (DB2)
 version: 0.0.2
 homepage: https://github.com/isaquepinheiro
@@ -11,8 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_cqlbr_core:
-    path: ../flutter_cqlbr_core
+  dart_cqlbr_core:
+    path: ../dart_cqlbr_core
   
 dev_dependencies:
   flutter_test:

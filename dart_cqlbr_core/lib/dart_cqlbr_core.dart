@@ -1,4 +1,4 @@
-library flutter_cqlbr_core;
+library dart_cqlbr_core;
 
 export 'src/core/cqlbr.ast.dart';
 export 'src/core/cqlbr.cases.dart';

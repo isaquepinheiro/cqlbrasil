@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
+import 'package:dart_cqlbr_core/dart_cqlbr_core.dart';
 
 class CQLUpdateFirestore extends CQLSection implements ICQLUpdate {
   late final FirebaseFirestore instance;

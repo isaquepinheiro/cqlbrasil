@@ -1,4 +1,4 @@
-library flutter_cqlbr_firebird;
+library dart_cqlbr_firebird;
 
 export 'src/cqlbr.functions.firebird.dart';
 export 'src/cqlbr.qualifier.firebird.dart';

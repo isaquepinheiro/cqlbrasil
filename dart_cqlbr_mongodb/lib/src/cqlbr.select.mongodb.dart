@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
+import 'package:dart_cqlbr_core/dart_cqlbr_core.dart';
 import 'cqlbr.delete.mongodb.dart';
 import 'cqlbr.functions.mongodb.dart';
 import 'cqlbr.insert.mongodb.dart';

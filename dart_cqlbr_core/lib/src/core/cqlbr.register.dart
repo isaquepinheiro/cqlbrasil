@@ -1,5 +1,10 @@
-import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
-
+import '../interface/cqlbr.interface.dart';
+import 'cqlbr.delete.dart';
+import 'cqlbr.insert.dart';
+import 'cqlbr.operators.dart';
+import 'cqlbr.orderby.dart';
+import 'cqlbr.update.dart';
+import 'cqlbr.where.dart';
 
 class CQLBrRegister {
   late final Map<CQLDatabase, ICQLSelect> cqlSelect;

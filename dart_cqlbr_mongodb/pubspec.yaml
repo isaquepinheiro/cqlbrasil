@@ -1,4 +1,4 @@
-name: flutter_cqlbr_mongodb
+name: dart_cqlbr_mongodb
 description: CQLBr Framework for Dart/Flutter (MongoDB)
 version: 0.0.1
 homepage: http://www.isaquepinheiro.com.br
@@ -11,8 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_cqlbr_core:
-    path: ../flutter_cqlbr_core
+  dart_cqlbr_core:
+    path: ../dart_cqlbr_core
 
 dev_dependencies:
   flutter_test:

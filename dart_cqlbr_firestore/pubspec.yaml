@@ -1,4 +1,4 @@
-name: flutter_cqlbr_firestore
+name: dart_cqlbr_firestore
 description: CQLBr Framework for Dart/Flutter (firestore)
 version: 0.0.1
 homepage: https://github.com/isaquepinheiro
@@ -11,8 +11,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_cqlbr_core:
-    path: ../flutter_cqlbr_core
+  dart_cqlbr_core:
+    path: ../dart_cqlbr_core
   firebase_core: ^2.8.0
   cloud_firestore: ^4.4.5
 

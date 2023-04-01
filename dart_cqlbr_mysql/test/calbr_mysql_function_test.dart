@@ -1,5 +1,5 @@
-import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
-import 'package:flutter_cqlbr_mysql/flutter_cqlbr_mysql.dart';
+import 'package:dart_cqlbr_core/dart_cqlbr_core.dart';
+import 'package:dart_cqlbr_mysql/dart_cqlbr_mysql.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

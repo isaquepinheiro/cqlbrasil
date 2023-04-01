@@ -1,4 +1,4 @@
-library flutter_cqlbr_firestore;
+library dart_cqlbr_firestore;
 
 export 'src/cqlbr.delete.firestore.dart';
 export 'src/cqlbr.insert.firestore.dart';
