@@ -72,8 +72,8 @@ void main() async {
           .or$('sobrenome')
           .equal$('Sobrenome Bob 1')
           .orderBy$('username, sobrenome').desc$()
-          .paging(1)
-          .position(0)
+          .pageSize(1)
+          .pagePosition(0)
           .asResult();
       QuerySnapshot snapshot1 = await result1.get();
 
