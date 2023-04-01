@@ -15,83 +15,76 @@
 :heavy_check_mark: `Package 3`: ```MongoDB``` (Result String)
 
 
-## Exemple for Firebase Database
+## CQLBr Interface
 
 ```Dart
-void main() async {
-  // Fake Cloud Firestore
-  final instance1 = FakeFirebaseFirestore();
-
-  await instance1.collection('users').doc('1').set(
-    {
-      'username': 'Bob 1',
-      'sobrenome': 'Sobrenome Bob 1',
-      'email': 'bob1@gmail.com',
-    },
-  );
-
-  await instance1.collection('users').doc('2').set(
-    {
-      'username': 'Bob 2',
-      'sobrenome': 'Sobrenome Bob 2',
-      'email': 'bob2@gmail.com',
-    },
-  );
-
-  // CQLBr
-  CQLBr cqlbr = CQLBr(select: CQLSelectFirestore(instance1));
-  
-  test(
-    'Test_Select_FirebaseFirestore',
-    () async {
-      final batch = instance1.batch();
-
-      // CQLBr
-      Query result1 = cqlbr.select$().all$().from$('users').asResult();
-      QuerySnapshot snapshot1 = await result1.get();
-
-      // Fake Cloud Firestore
-      QuerySnapshot snapshot2 = await instance1.collection('users').get();
-
-      await batch.commit();
-
-      expect(snapshot1.docs.length, snapshot2.docs.length);
-    },
-  );
-
-  test(
-    'Test_Select_Where_FirebaseFirestore',
-    () async {
-      final batch = instance1.batch();
-
-      // CQLBr
-      Query result1 = cqlbr
-          .select$()
-          .all$()
-          .from$('users')
-          .where$('username')
-          .equal$('Bob 1')
-          .and$('email')
-          .equal$('bob1@gmail.com')
-          .or$('sobrenome')
-          .equal$('Sobrenome Bob 1')
-          .orderBy$('username, sobrenome').desc$()
-          .asResult();
-      QuerySnapshot snapshot1 = await result1.get();
-
-      // Fake Cloud Firestore
-      Query result2 = instance1
-          .collection('users')
-          .where('username', isEqualTo: 'Bob 1')
-          .where('email', isEqualTo: 'bob1@gmail.com')
-          .where('sobrenome', isEqualTo: 'Sobrenome Bob 1')
-          .orderBy('username, sobrenome', descending: true);
-      QuerySnapshot snapshot2 = await result2.get();
-
-      await batch.commit();
-
-      expect(snapshot1.docs.length, snapshot2.docs.length);
-    },
-  );
+abstract class ICQL {
+  ICQL and$(dynamic expression);
+  ICQL as$(String alias);
+  ICQLCriteriaCase case$(dynamic expression);
+  ICQL on$(dynamic expression);
+  ICQL or$(dynamic expression);
+  ICQL set$(String columnName, dynamic columnValue);
+  ICQL all$();
+  ICQL asc$();
+  ICQL clear$();
+  ICQL clearAll$();
+  ICQL column$([dynamic columnName = '', String tableName = '']);
+  ICQL delete$();
+  ICQL desc$();
+  ICQL distinct$();
+  ICQLCriteriaExpression expression$(dynamic term);
+  ICQL from$(dynamic tableName, [String alias = '']);
+  ICQL groupBy$(dynamic columnName);
+  ICQL having$(dynamic expression);
+  ICQL fullJoin$(String tableName, [String alias = '']);
+  ICQL leftJoin$(String tableName, [String alias = '']);
+  ICQL rightJoin$(String tableName, [String alias = '']);
+  ICQL innerJoin$(String tableName, [String alias = '']);
+  ICQL insert$();
+  ICQL into$(String tableName);
+  bool isEmpty$();
+  ICQL orderBy$(dynamic columnName);
+  ICQL select$([dynamic columnName = '']);
+  ICQL first$(int value);
+  ICQL skip$(int value);
+  ICQL limit$(int value);
+  ICQL offset$(int value);
+  ICQL update$(String tableName);
+  ICQL where$([dynamic expression = '']);
+  ICQL values$(String columnName, dynamic columnValue);
+  // Operations functions
+  ICQL equal$([dynamic value = '']);
+  ICQL notEqual$(dynamic value);
+  ICQL greaterThan$(dynamic value);
+  ICQL greaterEqThan$(dynamic value);
+  ICQL lessThan$(dynamic value);
+  ICQL lessEqThan$(dynamic value);
+  ICQL isNull$();
+  ICQL isNotNull$();
+  ICQL like$(String value);
+  ICQL likeLeft$(String value);
+  ICQL likeRight$(String value);
+  ICQL notLike$(String value);
+  ICQL notLikeLeft$(String value);
+  ICQL notLikeRight$(String value);
+  ICQL notLikeFull$(String value);
+  ICQL in$(dynamic value);
+  ICQL notIn$(dynamic value);
+  ICQL exists$(String value);
+  ICQL notExists$(String value);
+  ICQL count$();
+  ICQL lower$();
+  ICQL min$();
+  ICQL max$();
+  ICQL upper$();
+  ICQL substring$(int start, int length);
+  ICQL date$(String value);
+  ICQL day$(String value);
+  ICQL month$(String value);
+  ICQL year$(String value);
+  ICQL concat$(List<String> value);
+  ICQLFunctions asFun$();
+  T asResult<T extends Object>();
 }
 ```
