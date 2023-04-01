@@ -72,6 +72,8 @@ void main() async {
           .or$('sobrenome')
           .equal$('Sobrenome Bob 1')
           .orderBy$('username, sobrenome').desc$()
+          .paging(1)
+          .position(0)
           .asResult();
       QuerySnapshot snapshot1 = await result1.get();
 
@@ -81,7 +83,8 @@ void main() async {
           .where('username', isEqualTo: 'Bob 1')
           .where('email', isEqualTo: 'bob1@gmail.com')
           .where('sobrenome', isEqualTo: 'Sobrenome Bob 1')
-          .orderBy('username, sobrenome', descending: true);
+          .orderBy('username, sobrenome', descending: true)
+          .limit(1);
       QuerySnapshot snapshot2 = await result2.get();
 
       await batch.commit();

@@ -285,17 +285,6 @@ class CQLBr implements ICQL {
   }
 
   @override
-  ICQL first$(int value) {
-    _assertSection([Section.secSelect, Section.secWhere, Section.secOrderBy]);
-    final ICQLSelectQualifier qualifier = _ast.select().qualifiers.add();
-    qualifier.qualifier = SelectQualifierType.sqFirst;
-    qualifier.value = value;
-    _ast.select().qualifiers.setAdd(qualifier);
-
-    return this;
-  }
-
-  @override
   ICQL from$(dynamic tableName, [String alias = '']) {
     if (tableName is ICQLCriteriaExpression) {
       final ICQLCriteriaExpression fromType = tableName;
@@ -461,9 +450,58 @@ class CQLBr implements ICQL {
     return this;
   }
 
+  // @override
+  // ICQL offset$(int value) {
+  //   return skip$(value);
+  // }
+
+  // @override
+  // ICQL limit$(int value) {
+  //   return first$(value);
+  // }
+
+  // @override
+  // ICQL first$(int value) {
+  //   _assertSection([Section.secSelect, Section.secWhere, Section.secOrderBy]);
+  //   final ICQLSelectQualifier qualifier = _ast.select().qualifiers.add();
+  //   qualifier.qualifier = SelectQualifierType.sqFirst;
+  //   qualifier.value = value;
+  //   _ast.select().qualifiers.setAdd(qualifier);
+
+  //   return this;
+  // }
+
+  // @override
+  // ICQL skip$(int value) {
+  //   _assertSection([Section.secSelect, Section.secWhere, Section.secOrderBy]);
+  //   final ICQLSelectQualifier qualifier = _ast.select().qualifiers.add();
+  //   qualifier.qualifier = SelectQualifierType.sqSkip;
+  //   qualifier.value = value;
+  //   _ast.select().qualifiers.setAdd(qualifier);
+
+  //   return this;
+  // }
+
   @override
-  ICQL limit$(int value) {
-    return first$(value);
+  ICQL paging(int value) {
+    _assertSection([Section.secSelect, Section.secWhere, Section.secOrderBy]);
+    final ICQLSelectQualifier qualifierPaging = _ast.select().qualifiers.add();
+    qualifierPaging.qualifier = SelectQualifierType.sqPaging;
+    qualifierPaging.value = value;
+    _ast.select().qualifiers.setAdd(qualifierPaging);
+
+    return this;
+  }
+
+  @override
+  ICQL position<T>(T value) {
+    _assertSection([Section.secSelect, Section.secWhere, Section.secOrderBy]);
+    final ICQLSelectQualifier qualifierSkip = _ast.select().qualifiers.add();
+    qualifierSkip.qualifier = SelectQualifierType.sqSkip;
+    qualifierSkip.value = value;
+    _ast.select().qualifiers.setAdd(qualifierSkip);
+
+    return this;
   }
 
   @override
@@ -567,11 +605,6 @@ class CQLBr implements ICQL {
   }
 
   @override
-  ICQL offset$(int value) {
-    return skip$(value);
-  }
-
-  @override
   ICQL on$(dynamic expression) {
     if (expression is List<String>) {
       on$(Utils.instance.sqlParamsToStr(expression));
@@ -622,17 +655,6 @@ class CQLBr implements ICQL {
     }
 
     return _internalSet(columnName, columnValue);
-  }
-
-  @override
-  ICQL skip$(int value) {
-    _assertSection([Section.secSelect, Section.secWhere, Section.secOrderBy]);
-    final ICQLSelectQualifier qualifier = _ast.select().qualifiers.add();
-    qualifier.qualifier = SelectQualifierType.sqSkip;
-    qualifier.value = value;
-    _ast.select().qualifiers.setAdd(qualifier);
-
-    return this;
   }
 
   @override

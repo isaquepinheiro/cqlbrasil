@@ -1,29 +1,29 @@
 import 'package:dart_cqlbr_core/dart_cqlbr_core.dart';
 
-class CQLFunctionsMongoDB extends CQLFunctionAbstract {
+class CQLFunctionsCassandra extends CQLFunctionAbstract {
   @override
   String substring(String value, int start, int length) {
-    return 'SUBSTRING($value FROM $start FOR $length)';
+    return 'SUBSTRING($value, $start, $length)';
   }
 
   @override
   String date(String value, [String format = 'yyyy-MM-dd']) {
-    return format.isEmpty ? value : 'DATE($value)';
+    return format.isEmpty ? value : 'DATE_FORMAT($value, $format)';
   }
 
   @override
   String day(String value) {
-    return 'EXTRACT(DAY FROM $value)';
+    return 'DAY($value)';
   }
 
   @override
   String month(String value) {
-    return 'EXTRACT(MONTH FROM $value)';
+    return 'MONTH($value)';
   }
 
   @override
   String year(String value) {
-    return 'EXTRACT(YEAR FROM $value)';
+    return 'YEAR($value)';
   }
 
   @override
@@ -32,10 +32,10 @@ class CQLFunctionsMongoDB extends CQLFunctionAbstract {
     for (int i = 0; i < value.length; i++) {
       result += value[i];
       if (i < value.length - 1) {
-        result += ' || ';
+        result += ', ';
       }
     }
 
-    return result;
+    return 'CONCAT($result)';
   }
 }

@@ -104,8 +104,8 @@ void main() {
     String result = cqlbr
         .select$()
         .all$()
-        .limit$(3)
-        .offset$(0)
+        .paging(3)
+        .position(0)
         .from$('CLIENTES', 'CLI')
         .orderBy$('CLI.ID_CLIENTE')
         .asResult();

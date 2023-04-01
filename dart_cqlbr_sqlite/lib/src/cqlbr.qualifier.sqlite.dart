@@ -4,15 +4,15 @@ class CQLSelectQualifiersSQLite extends CQLSelectQualifiers {
   CQLSelectQualifiersSQLite();
 
   @override
-  String serializePagination() {
+  T? serializePagination<T extends Object>() {
     String result = '';
-    String first = '';
+    String paging = '';
     String skip = '';
 
     for (final ICQLSelectQualifier element in qualifiers) {
       switch (element.qualifier) {
-        case SelectQualifierType.sqFirst:
-          first = Utils.instance.concat(['LIMIT', element.value.toString()]);
+        case SelectQualifierType.sqPaging:
+          paging = Utils.instance.concat(['LIMIT', element.value.toString()]);
           break;
         case SelectQualifierType.sqSkip:
           skip = Utils.instance.concat(['OFFSET', element.value.toString()]);
@@ -22,6 +22,6 @@ class CQLSelectQualifiersSQLite extends CQLSelectQualifiers {
               'CQLSelectQualifiersSQLite.SerializePagination: Unknown qualifier type');
       }
     }
-    return Utils.instance.concat([result, first, skip]);
+    return Utils.instance.concat([result, paging, skip]) as T;
   }
 }

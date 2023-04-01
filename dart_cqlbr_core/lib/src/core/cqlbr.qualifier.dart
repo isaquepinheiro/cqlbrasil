@@ -1,9 +1,8 @@
 import 'package:flutter/foundation.dart';
-
 import '../interface/cqlbr.interface.dart';
 
 class CQLSelectQualifier implements ICQLSelectQualifier {
-  late final int _value;
+  late final dynamic _value;
   @protected
   late final SelectQualifierType _qualifier;
 
@@ -13,9 +12,9 @@ class CQLSelectQualifier implements ICQLSelectQualifier {
   set qualifier(SelectQualifierType value) => _qualifier = value;
 
   @override
-  int get value => _value;
+  dynamic get value => _value;
   @override
-  set value(int value) => _value = value;
+  set value(dynamic value) => _value = value;
 }
 
 class CQLSelectQualifiers implements ICQLSelectQualifiers {
@@ -37,8 +36,9 @@ class CQLSelectQualifiers implements ICQLSelectQualifiers {
   @override
   setAdd(ICQLSelectQualifier value) {
     final List<SelectQualifierType> types = <SelectQualifierType>[
-      SelectQualifierType.sqFirst,
-      SelectQualifierType.sqSkip
+      // SelectQualifierType.sqFirst,
+      SelectQualifierType.sqSkip,
+      SelectQualifierType.sqPaging
     ];
     _qualifiers.add(value);
     if (types.contains(value.qualifier)) {
@@ -82,7 +82,7 @@ class CQLSelectQualifiers implements ICQLSelectQualifiers {
   }
 
   @override
-  String serializePagination() {
+  T? serializePagination<T extends Object>() {
     throw Exception('Not implemented');
   }
 }

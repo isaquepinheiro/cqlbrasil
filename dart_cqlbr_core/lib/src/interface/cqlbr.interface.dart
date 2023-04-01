@@ -23,6 +23,7 @@ enum CQLDatabase {
   dbnASA(name: 'dbnASA'),
   dbnInformix(name: 'dbnInformix'),
   dbnNexusDB(name: 'dbnNexusDB'),
+  dbnCassandra(name: 'dbnCassandra'),
   dbnADs(name: 'dbnADs');
 
   final String name;
@@ -140,10 +141,12 @@ abstract class ICQL {
   bool isEmpty$();
   ICQL orderBy$(dynamic columnName);
   ICQL select$([dynamic columnName = '']);
-  ICQL first$(int value);
-  ICQL skip$(int value);
-  ICQL limit$(int value);
-  ICQL offset$(int value);
+  // ICQL first$(int value);
+  // ICQL skip$(int value);
+  // ICQL limit$(int value);
+  // ICQL offset$(int value);
+  ICQL paging(int value);
+  ICQL position<T>(T value);
   ICQL update$(String tableName);
   ICQL where$([dynamic expression = '']);
   ICQL values$(String columnName, dynamic columnValue);
@@ -316,7 +319,8 @@ abstract class ICQLOrderByColumn extends ICQLName {
 }
 
 enum SelectQualifierType {
-  sqFirst(name: 'First'),
+  // sqFirst(name: 'First'),
+  sqPaging(name: 'Paging'),
   sqSkip(name: 'Skip'),
   sqDistinct(name: 'Distinct');
 
@@ -328,8 +332,8 @@ enum SelectQualifierType {
 abstract class ICQLSelectQualifier {
   SelectQualifierType get qualifier;
   set qualifier(SelectQualifierType value);
-  int get value;
-  set value(int value);
+  dynamic get value;
+  set value(dynamic value);
 }
 
 abstract class ICQLSelectQualifiers {
@@ -339,7 +343,7 @@ abstract class ICQLSelectQualifiers {
   bool isEmpty();
   int count();
   bool executingPagination();
-  String serializePagination();
+  T? serializePagination<T extends Object>();
   String serializeDistinct();
   void clear();
 }
@@ -470,26 +474,3 @@ abstract class ICQLOperators {
   ICQLOperator isExists(String value);
   ICQLOperator isNotExists(String value);
 }
-
-// abstract class ICQLOperators {
-//   String isEqual(dynamic value);
-//   String isNotEqual(dynamic value);
-//   String isGreaterThan(dynamic value);
-//   String isGreaterEqThan(dynamic value);
-//   String isLessThan(dynamic value);
-//   String isLessEqThan(dynamic value);
-//   String isNull();
-//   String isNotNull();
-//   String isLike(String value);
-//   String isLikeFull(String value);
-//   String isLikeLeft(String value);
-//   String isLikeRight(String value);
-//   String isNotLike(String value);
-//   String isNotLikeFull(String value);
-//   String isNotLikeLeft(String value);
-//   String isNotLikeRight(String value);
-//   String isIn(dynamic value);
-//   String isNotIn(dynamic value);
-//   String isExists(String value);
-//   String isNotExists(String value);
-// }

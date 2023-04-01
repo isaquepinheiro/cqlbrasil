@@ -5,7 +5,7 @@ class CQLSerializerDB2 extends CQLSerialize {
   T asResult<T extends Object>(ICQLAST ast) {
     T result = super.asResult<T>(ast);
     result = Utils.instance
-        .concat([result, ast.select().qualifiers.serializePagination()]) as T;
+        .concat([result, ast.select().qualifiers.serializePagination<String>()]) as T;
     return result;
   }
 }
