@@ -8,6 +8,7 @@ import 'cqlbr.qualifier.firestore.dart';
 import 'cqlbr.serialize.firestore.dart';
 import 'cqlbr.update.firestore.dart';
 import 'cqlbr.where.firestore.dart';
+import 'cqlbr.orderby.firestore.dart';
 
 class CQLSelectFirestore extends CQLSelect {
   late final FirebaseFirestore instance;
@@ -20,6 +21,7 @@ class CQLSelectFirestore extends CQLSelect {
     CQLBrRegister.instance.registerInsert(driver, CQLInsertFirestore(instance));
     CQLBrRegister.instance.registerUpdate(driver, CQLUpdateFirestore(instance));
     CQLBrRegister.instance.registerWhere(driver, CQLWhereFirestore());
+    CQLBrRegister.instance.registerOrderBy(driver, CQLOrderByFirestore());
     CQLBrRegister.instance.registerSerialize(driver, CQLSerializerFirestore());
     CQLBrRegister.instance
         .registerFunctions(driver, CQLFunctions(database: driver));

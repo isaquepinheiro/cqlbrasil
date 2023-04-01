@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
 import 'package:flutter_cqlbr_firestore/src/cqlbr.where.firestore.dart';
 
+import 'cqlbr.orderby.firestore.dart';
+
 class CQLSerializerFirestore extends CQLSerialize {
   @override
   T asResult<T extends Object>(ICQLAST ast) {
@@ -14,6 +16,12 @@ class CQLSerializerFirestore extends CQLSerialize {
     result ??= ast.update().serialize<DocumentReference>();
     if (!ast.where().isEmpty()) {
       result = (ast.where() as CQLWhereFirestore).serialize<Query>(
+          (result is Query)
+              ? result
+              : (result as DocumentReference).parent);
+    }
+    if (!ast.orderBy().isEmpty()) {
+      result = (ast.orderBy() as CQLOrderByFirestore).serialize<Query>(
           (result is Query)
               ? result
               : (result as DocumentReference).parent);

@@ -120,6 +120,7 @@ abstract class ICQL {
   ICQL or$(dynamic expression);
   ICQL set$(String columnName, dynamic columnValue);
   ICQL all$();
+  ICQL asc$();
   ICQL clear$();
   ICQL clearAll$();
   ICQL column$([dynamic columnName = '', String tableName = '']);
@@ -229,9 +230,9 @@ abstract class ICQLSelect extends ICQLSection {
 }
 
 abstract class ICQLWhere extends ICQLSection {
-  T? serialize<T extends Object>();
   ICQLExpression get expression;
   set expression(ICQLExpression value);
+  T? serialize<T extends Object>();
 }
 
 abstract class ICQLOrderBy extends ICQLSection {
@@ -300,6 +301,7 @@ abstract class ICQLUpdate extends ICQLSection {
 }
 
 enum OrderByDirection {
+  dirNone(name: ''),
   dirAscending(name: 'Asc'),
   dirDescending(name: 'Desc');
 

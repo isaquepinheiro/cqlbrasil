@@ -1,12 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
-import 'cqlbr.recursive.serialize.firestore.dart';
+import 'cqlbr.expression.serialize.firestore.dart';
 
 class CQLWhereFirestore extends CQLSection implements ICQLWhere {
   late final ICQLExpression _expression;
+  late final CQLExpressionSerializeFirestore _serialize;
 
   CQLWhereFirestore() : super(name: 'Where') {
     _expression = CQLExpression();
+    _serialize = CQLExpressionSerializeFirestore();
   }
 
   @override
@@ -18,7 +20,7 @@ class CQLWhereFirestore extends CQLSection implements ICQLWhere {
   T? serialize<T extends Object>([Query? queryRef]) {
     return isEmpty()
         ? null
-        : CQLRecursiveSerializeFirestore.serialize<Query>(_expression, queryRef)
+        : _serialize.serialize<Query>(_expression, queryRef)
             as T;
   }
 

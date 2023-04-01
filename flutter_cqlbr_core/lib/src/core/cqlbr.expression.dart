@@ -1,4 +1,5 @@
 import '../interface/cqlbr.interface.dart';
+import 'cqlbr.expression.serialize.dart';
 import 'cqlbr.operators.dart';
 import 'cqlbr.utils.dart';
 
@@ -13,9 +14,11 @@ class CQLExpression extends ICQLExpression {
   late CQLExpressionOperation _operation;
   late CQLOperatorCompare _compare;
   late String _term;
+  late CQLExpressionSerialize _serialize;
 
   CQLExpression() {
     clear();
+    _serialize = CQLExpressionSerialize(expression: this);
   }
 
   @override
@@ -68,51 +71,7 @@ class CQLExpression extends ICQLExpression {
 
   @override
   T? serialize<T extends Object>([bool addParens = false]) {
-    if (isEmpty()) {
-      return '' as T;
-    }
-    switch (_operation) {
-      case CQLExpressionOperation.eoNone:
-        return _serializeWhere(addParens) as T;
-      case CQLExpressionOperation.eoAnd:
-        return _serializeAND() as T;
-      case CQLExpressionOperation.eoOr:
-        return _serializeOR() as T;
-      case CQLExpressionOperation.eoOperation:
-        return _serializeOperator() as T;
-      case CQLExpressionOperation.eoFunction:
-        return _serializeFunction() as T;
-      default:
-        throw Exception(
-            'CQLExpression.Serialize: Unknown expression operation: $_operation');
-    }
-  }
-
-  String _serializeWhere(bool addParens) {
-    return addParens ? '($_term)' : _term;
-  }
-
-  String _serializeAND() {
-    return Utils.instance
-        .concat([_left?.serialize(true), 'AND', _right?.serialize(true)]);
-  }
-
-  String _serializeOR() {
-    final String result = Utils.instance
-        .concat([_left?.serialize(true), 'OR', _right?.serialize(true)]);
-
-    return '($result)';
-  }
-
-  String _serializeOperator() {
-    final result = Utils.instance
-        .concat([_left?.serialize(), _compare.name, _right?.serialize()]);
-
-    return '($result)';
-  }
-
-  String _serializeFunction() {
-    return Utils.instance.concat([_left!.serialize(), _right!.serialize()]);
+    return _serialize.serialize<T>(addParens);
   }
 }
 

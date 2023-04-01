@@ -1,10 +1,5 @@
-import 'package:flutter_cqlbr_core/src/core/cqlbr.delete.dart';
-import 'package:flutter_cqlbr_core/src/core/cqlbr.insert.dart';
-import 'package:flutter_cqlbr_core/src/core/cqlbr.where.dart';
+import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
 
-import '../interface/cqlbr.interface.dart';
-import 'cqlbr.operators.dart';
-import 'cqlbr.update.dart';
 
 class CQLBrRegister {
   late final Map<CQLDatabase, ICQLSelect> cqlSelect;
@@ -15,6 +10,7 @@ class CQLBrRegister {
   late final Map<CQLDatabase, ICQLSerialize> cqlSerialize;
   late final Map<CQLDatabase, ICQLFunctions> cqlFunctions;
   late final Map<CQLDatabase, ICQLOperators> cqlOperators;
+  late final Map<CQLDatabase, ICQLOrderBy> cqlOrderBy;
 
   static CQLBrRegister? _instance;
 
@@ -27,6 +23,7 @@ class CQLBrRegister {
     cqlSerialize = {};
     cqlFunctions = {};
     cqlOperators = {};
+    cqlOrderBy = {};
   }
 
   static CQLBrRegister get instance => _instance ??= CQLBrRegister._();
@@ -49,6 +46,10 @@ class CQLBrRegister {
 
   void registerWhere(CQLDatabase database, ICQLWhere where) {
     cqlWhere[database] = where;
+  }
+
+  void registerOrderBy(CQLDatabase database, ICQLOrderBy orderBy) {
+    cqlOrderBy[database] = orderBy;
   }
 
   void registerSerialize(CQLDatabase database, ICQLSerialize serialize) {
@@ -84,6 +85,10 @@ class CQLBrRegister {
 
   ICQLWhere where(CQLDatabase database) {
     return cqlWhere[database] ?? CQLWhere();
+  }
+
+  ICQLOrderBy orderBy(CQLDatabase database) {
+    return cqlOrderBy[database] ?? CQLOrderBy();
   }
 
   ICQLSerialize serialize(CQLDatabase database) {

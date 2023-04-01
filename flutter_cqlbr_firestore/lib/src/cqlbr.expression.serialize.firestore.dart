@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_cqlbr_core/flutter_cqlbr_core.dart';
 
-class CQLRecursiveSerializeFirestore {
-  static Query? serialize<T extends Object>(
+class CQLExpressionSerializeFirestore {
+  
+  Query? serialize<T extends Object>(
       ICQLExpression expression, Query? queryRef) {
     Query? result = queryRef;
 
@@ -40,7 +41,7 @@ class CQLRecursiveSerializeFirestore {
     }
   }
 
-  static Query? _serializeWhere<T extends Object>(
+  Query? _serializeWhere<T extends Object>(
       ICQLExpression expression, Query? queryRef) {
     switch (expression.compare) {
       case CQLOperatorCompare.fcEqual:

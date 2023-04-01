@@ -211,6 +211,18 @@ class CQLBr implements ICQL {
   }
 
   @override
+  ICQL asc$() {
+    _assertSection([Section.secOrderBy]);
+    assert(
+        _ast.astColumns!.count() > 0, 'Criteria.Asc: No columns set up yet');
+    (_ast.orderBy().columns().columns(_ast.orderBy().columns().count() - 1)
+            as ICQLOrderByColumn)
+        .direction = OrderByDirection.dirAscending;
+
+    return this;
+  }
+
+  @override
   ICQL desc$() {
     _assertSection([Section.secOrderBy]);
     assert(

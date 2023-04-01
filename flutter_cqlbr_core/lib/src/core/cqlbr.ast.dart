@@ -2,7 +2,6 @@ import '../interface/cqlbr.interface.dart';
 import 'cqlbr.groupby.dart';
 import 'cqlbr.having.dart';
 import 'cqlbr.joins.dart';
-import 'cqlbr.orderby.dart';
 import 'cqlbr.register.dart';
 
 class CQLAST implements ICQLAST {
@@ -26,9 +25,9 @@ class CQLAST implements ICQLAST {
     _update = CQLBrRegister.instance.update(database);
     _delete = CQLBrRegister.instance.delete(database);
     _where = CQLBrRegister.instance.where(database);
+    _orderBy = CQLBrRegister.instance.orderBy(database);
     _joins = CQLJoins();
     _having = CQLHaving();
-    _orderBy = CQLOrderBy();
     _groupBy = CQLGroupBy();
     _astSection = null;
     _astTableNames = null;

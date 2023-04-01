@@ -39,7 +39,7 @@ class CQLOrderBy extends CQLSection implements ICQLOrderBy {
   }
 
   @override
-  T serialize<T extends Object>() {
+  T? serialize<T extends Object>() {
     return isEmpty()
         ? '' as T
         : Utils.instance.concat(['ORDER BY', _columns.serialize()]) as T;
