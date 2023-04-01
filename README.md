@@ -88,3 +88,31 @@ abstract class ICQL {
   T asResult<T extends Object>();
 }
 ```
+## Use Firebase
+
+```dart
+  CQLBr cqlbr = CQLBr(select: CQLSelectFirestore(instance1));
+
+  cqlbr.select$()
+       .all$()
+       .from$('users')
+       .where$('username').equal$('Bob 1')
+       .and$('email').equal$('bob1@gmail.com')
+       .or$('sobrenome').equal$('Sobrenome Bob 1')
+       .orderBy$('username, sobrenome').desc$()
+  .asResult();
+```
+## Use MySQL
+
+```dart
+  CQLBr cqlbr = CQLBr(select: CQLSelectMySQL());
+
+  cqlbr.select$()
+       .all$()
+       .from$('users')
+       .where$('username').equal$('Bob 1')
+       .and$('email').equal$('bob1@gmail.com')
+       .or$('sobrenome').equal$('Sobrenome Bob 1')
+       .orderBy$('username, sobrenome').desc$()
+  .asResult();
+```
