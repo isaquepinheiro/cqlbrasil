@@ -280,7 +280,6 @@ class CQLBr implements ICQL {
       expression$(Utils.instance.sqlParamsToStr(term));
     }
 
-//    return CQLCriteriaExpression(expressionStr: term);
     return injbr.get<ICQLCriteriaExpression>()(expressionStr: term);
   }
 
@@ -483,7 +482,7 @@ class CQLBr implements ICQL {
   // }
 
   @override
-  ICQL paging(int value) {
+  ICQL pageSize(int value) {
     _assertSection([Section.secSelect, Section.secWhere, Section.secOrderBy]);
     final ICQLSelectQualifier qualifierPaging = _ast.select().qualifiers.add();
     qualifierPaging.qualifier = SelectQualifierType.sqPaging;
@@ -494,7 +493,7 @@ class CQLBr implements ICQL {
   }
 
   @override
-  ICQL position<T>(T value) {
+  ICQL pagePosition<T>(T value) {
     _assertSection([Section.secSelect, Section.secWhere, Section.secOrderBy]);
     final ICQLSelectQualifier qualifierSkip = _ast.select().qualifiers.add();
     qualifierSkip.qualifier = SelectQualifierType.sqSkip;

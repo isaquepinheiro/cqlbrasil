@@ -145,8 +145,8 @@ abstract class ICQL {
   // ICQL skip$(int value);
   // ICQL limit$(int value);
   // ICQL offset$(int value);
-  ICQL paging(int value);
-  ICQL position<T>(T value);
+  ICQL pageSize(int value);
+  ICQL pagePosition<T>(T value);
   ICQL update$(String tableName);
   ICQL where$([dynamic expression = '']);
   ICQL values$(String columnName, dynamic columnValue);
