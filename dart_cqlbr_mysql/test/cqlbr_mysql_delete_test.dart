@@ -3,18 +3,20 @@ import 'package:dart_cqlbr_mysql/dart_cqlbr_mysql.dart';
 import 'package:test/test.dart';
 
 void main() {
-  CQLBr cqlbr = CQLBr(select: CQLSelectMySQL());
+  group('A group of tests -', () {
+    CQLBr cqlbr = CQLBr(select: CQLSelectMySQL());
 
-  test('TestDeleteMySQL', () {
-    String result = cqlbr.delete$().from$('CLIENTES').asResult();
+    test('TestDeleteMySQL', () {
+      String result = cqlbr.delete$().from$('CLIENTES').asResult();
 
-    expect(result, 'DELETE FROM CLIENTES');
-  });
+      expect(result, 'DELETE FROM CLIENTES');
+    });
 
-  test('TestDeleteWhereMySQL', () {
-    String result =
-        cqlbr.delete$().from$('CLIENTES').where$('ID_CLIENTE = 1').asResult();
+    test('TestDeleteWhereMySQL', () {
+      String result =
+          cqlbr.delete$().from$('CLIENTES').where$('ID_CLIENTE = 1').asResult();
 
-    expect(result, 'DELETE FROM CLIENTES WHERE ID_CLIENTE = 1');
+      expect(result, 'DELETE FROM CLIENTES WHERE ID_CLIENTE = 1');
+    });
   });
 }
