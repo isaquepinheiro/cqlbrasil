@@ -6,9 +6,11 @@ publish_to: 'none'
 
 environment:
   sdk: '>=2.19.5 <3.0.0'
+  flutter: ">=1.17.0"
 
 dependencies:
-  meta: ^1.9.1
+  flutter:
+    sdk: flutter
   cqlbr_core:
     path: ../cqlbr_core
   firebase_core: ^2.8.0
