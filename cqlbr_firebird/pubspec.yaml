@@ -1,0 +1,17 @@
+name: cqlbr_firebird
+description: CQLBr Framework for Dart/Flutter (Firebird)
+version: 0.0.1
+homepage: https://github.com/isaquepinheiro
+publish_to: 'none'
+
+environment:
+  sdk: '>=2.19.5 <3.0.0'
+
+dependencies:
+  cqlbr_core:
+    path: ../cqlbr_core
+      
+
+dev_dependencies:
+  lints: ^2.0.0
+  test: ^1.21.0
